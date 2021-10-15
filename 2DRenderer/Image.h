@@ -1,16 +1,16 @@
 #pragma once
+#include "ColorBuffer.h"
 #include <string>
 
 class Image
 {
 public:
-	~Image() { delete[] buffer; }
 
 	bool Load(const std::string& filename, uint8_t alpha = 255);
+	void Flip();
 
-private:
-	uint8_t* buffer{nullptr};
+	friend class Framebuffer;
 
-	int width{ 0 };
-	int height{ 0 };
+public:
+	ColorBuffer colorBuffer;
 };
