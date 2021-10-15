@@ -26,25 +26,42 @@ int main(int, char**)
 		}
 		
 		framebuffer->Clear({0, 0, 0, 0});
-		//for (int i = 0; i < 100; i++)
-		//{
-		//	framebuffer->DrawPoint(rand() % framebuffer->width, rand() % framebuffer->height, {255, 255, 255, 255});
-		//}
-		//
-		//for (int i = 0; i < 20; i++)
-		//{
-		//	framebuffer->DrawRect(rand() % framebuffer->width, rand() % framebuffer->height, rand() % 5, rand() % 5, { 255, 249, 82, 255 });
-		//}
-		//
-		//for (int i = 0; i < 50; i++)
-		//{
-		//	framebuffer->DrawLine(framebuffer->width >> 1, framebuffer->height >> 1, rand() % framebuffer->width, rand() % framebuffer->height, { 255, 255, 255, 50 });
-		//}
-		
-		framebuffer->DrawTriangle(50, 50, 25, 100, 75, 100, {255, 255, 255, 255});
+		for (int i = 0; i < 50; i++)
+		{
+			framebuffer->DrawPoint(rand() % framebuffer->width, rand() % framebuffer->height, { 0, 255, 0, 0 });
+		}
+		for (int i = 0; i < 20; i++)
+		{
+			framebuffer->DrawRect(rand() % framebuffer->width, rand() % framebuffer->height, 20, 20, { 0, 0, 255, 0 });
+		}
+		for (int i = 0; i < 20; i++)
+		{
+			framebuffer->DrawLine(framebuffer->width >> 1, framebuffer->height >> 1, rand() % framebuffer->width, rand() % framebuffer->height, { 255, 0, 0, 0 });
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			framebuffer->DrawTriangle(framebuffer->width >> 1, framebuffer->height >> 1, rand() % framebuffer->width, rand() % framebuffer->height, rand() % framebuffer->width, rand() % framebuffer->height, { 255, 255, 0, 0 });
+		}
+		framebuffer->DrawCircle(framebuffer->width >> 1, framebuffer->height >> 1, 50, { 255, 0, 255, 0 });
 
-		//framebuffer->DrawSimpleCurve(200, 200, 300, 100, 5, {255, 255, 255, 255});
-		framebuffer->DrawQuadraticCurve(200, 200, 300, 100, 400, 400, 3, {255,255,255,255});
+
+
+		for (int i = 0; i < 5; i++)
+		{
+			framebuffer->DrawQuadraticCurve(
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				rand() % framebuffer->width, rand() % framebuffer->height, 30, { 0, 255, 255, 255 });
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			framebuffer->DrawCubicCurve(
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				rand() % framebuffer->width, rand() % framebuffer->height,
+				30, { 255, 255, 255, 255 });
+		}
 
 		framebuffer->Update();
 
