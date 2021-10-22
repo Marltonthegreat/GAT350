@@ -30,6 +30,9 @@
     <ClCompile Include="PostProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framebuffer.h">
@@ -46,6 +49,15 @@
     </ClInclude>
     <ClInclude Include="PostProcess.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

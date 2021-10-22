@@ -63,10 +63,7 @@ int main(int, char**)
 		//		30, { 255, 255, 255, 255 });
 		//}
 
-		std::unique_ptr<Image> image = std::make_unique<Image>();
-		image->Load("../resources/flower.bmp", 210);
-		image->Flip();
-
+		]
 		std::unique_ptr<Image> image1 = std::make_unique<Image>(*image.get());
 		PostProcess::BoxBlur(image1->colorBuffer);
 
