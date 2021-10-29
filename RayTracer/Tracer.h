@@ -8,5 +8,5 @@ public:
 	void Trace(const ColorBuffer& colorBuffer, class Scene* scene);
 
 public:
-	int samples{1000};
+	int samples{5};
 };
