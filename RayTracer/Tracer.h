@@ -5,6 +5,8 @@
 class Tracer
 {
 public:
-	void Trace(const ColorBuffer& colorBuffer);
-	
+	void Trace(const ColorBuffer& colorBuffer, class Scene* scene);
+
+public:
+	int samples{1000};
 };
