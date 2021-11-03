@@ -21,19 +21,28 @@ int main(int, char**)
 	// ray tracer
 	std::unique_ptr<Tracer> tracer = std::make_unique<Tracer>();
 
+	// samplers
+	std::shared_ptr<Image> image = std::make_shared<Image>("../resources/sus.bmp");
+
 	// scene
 	std::unique_ptr<Scene> scene = std::make_unique<Scene>();
 	scene->Add(std::move(std::make_unique<Sphere>(glm::vec3{ 0, 0, -10 }, 3.0f, std::make_shared<Lambertian>(glm::vec3{ 1, 0, 0 }))));
+	scene->Add(std::move(std::make_unique<Sphere>(glm::vec3{ -5, 2, -5 }, 1.0f, std::make_shared<Metal>(glm::vec3{ 1, 1, 1 }, .5f))));
 	scene->Add(std::move(std::make_unique<Sphere>(glm::vec3{ 3, 3, -8 }, 1.0f, std::make_shared<Metal>(glm::vec3{ 0, 1, 0 }, 0.0f))));
-	scene->Add(std::move(std::make_unique<Plane>(glm::vec3{ 0, -3, 0 }, glm::vec3{ 0, 1, 0 }, std::make_shared<Lambertian>(glm::vec3{ 0.5f, 0.5f, 0.5f }))));
+	scene->Add(std::move(std::make_unique<Plane>(glm::vec3{ 0, -3, 0 }, glm::vec3{ 0, 1, 0 }, std::make_shared<Metal>(glm::vec3{ 0.5f, 0.5f, 0.5f }, .05f))));
 
 	float focalLength = glm::length(glm::vec3{ 5, 5, 5 } - glm::vec3{ 0, 0, -10 });
 
-	std::unique_ptr<Camera> camera = std::make_unique<Camera>(glm::vec3{ 5, 5, 5 }, glm::vec3{ 0, 0, -10 }, glm::vec3{ 0, 1, 0 }, 90.0f, glm::ivec2{ framebuffer->colorBuffer.width, framebuffer->colorBuffer.height }, 1.0f, focalLength);
+	std::unique_ptr<Camera> camera = std::make_unique<Camera>(glm::vec3{ 5, 5, 5 }, glm::vec3{ 0, 0, -10 }, glm::vec3{ 0, 1, 0 }, 90.0f, glm::ivec2{ framebuffer->colorBuffer.width, framebuffer->colorBuffer.height }, .0f, focalLength);
 
 	framebuffer->Clear({0, 0, 0, 0});	
 	tracer->Trace(framebuffer->colorBuffer, scene.get(), camera.get());
 	framebuffer->Update();
+
+	for (int i = 1; i <= 20; i++)
+	{
+		std::cout << i * 5 << std::endl;
+	}
 
 	bool quit = false;
 	SDL_Event event;

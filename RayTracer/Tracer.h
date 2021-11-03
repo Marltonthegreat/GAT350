@@ -8,5 +8,6 @@ public:
 	void Trace(const ColorBuffer& colorBuffer, class Scene* scene, class Camera* camera);
 
 public:
-	int samples{20};
+	int samples{1};
+	int depth = 30;
 };
