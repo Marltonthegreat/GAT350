@@ -10,6 +10,9 @@
 
 int main(int, char**)
 {
+	//In Checker sampler add * glm::pi<float>() to each sin
+	//Input Maple's code
+
 	const int WIDTH = 800;
 	const int HEIGHT = 600;
 
