@@ -21,23 +21,21 @@ glm::vec3 Scene::Trace(const ray_t& ray, float tMin, float tMax, raycastHit_t& h
         ray_t scattered;
         glm::vec3 attenuation;
 
-        if (hit.material->Scatter(ray, hit, attenuation, scattered))
+        glm::vec3 emissive = hit.material->Emitter(hit.uv, hit.point);
+
+        if (!hit.material->Scatter(ray, hit, attenuation, scattered))
         {
-            return attenuation * Trace(scattered, tMin, tMax, hit, depth - 1);
-        }
-        else
-        {
-            return { 0, 0, 0 };
+            return emissive;
         }
 
+        return emissive + attenuation * Trace(scattered, tMin, tMax, hit, depth - 1);
     }
     else
     {
-
         //sky
         glm::vec3 direction = glm::normalize(ray.direction);
         float t = (direction.y + 1) * 0.5f;
-        return glm::lerp(glm::vec3(1, 1, 1), glm::vec3(0.5f, 0.7f, 1.0f), t);
+        return glm::lerp(glm::vec3(1, 1, 1), glm::vec3(0.5f, 0.7f, 1.0f), t) * .15f;
     }
 }
 
