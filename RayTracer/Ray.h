@@ -22,7 +22,7 @@ struct ray_t
 	glm::vec3 pointAt(float t) const { return origin + (direction * t); }
 };
 
-inline glm::vec2 GetPlanerUV(const glm::vec3& point)
+inline glm::vec2 GetPlanarUV(const glm::vec3& point)
 {
 	glm::vec2 uv{point.x, point.z};
 
